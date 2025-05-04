@@ -3,7 +3,7 @@ const TelegramBot = require('node-telegram-bot-api');
 
 // === CONFIGURATION ===
 const BOT_TOKEN = process.env.BOT_TOKEN;
-const CHANNEL_ID = '-1002491864473'; // Replace with your channel ID
+const CHANNEL_ID = '-1002353520070'; // Replace with your channel ID
 const ADMIN_ID = 6101660516;         // Replace with your Telegram ID
 
 const bot = new TelegramBot(BOT_TOKEN, { polling: true });
@@ -23,17 +23,7 @@ const reviews = [
   "💸 Earnings drop daily like clockwork. Love it!",
   "👌 Simple UI, fast payments, no stress.",
   "🙌 Got paid without any issues. Real deal!",
-  "🤑 Was skeptical at first but it’s real. Highly recommended!",
-  "💥 Earnbuzz changed my life! I'm earning more than I expected.",
-  "📝 The referral system is genius. I've already invited a few friends!",
-  "💰 Fast withdrawals and no problems with my account. Definitely a win!",
-  "🚀 Super easy to get started and the earnings are consistent.",
-  "🎉 I’ve been using it for a month now and everything is going smoothly.",
-  "📲 This is the app I’ve been looking for. It’s simple and effective.",
-  "🙌 Love how easy it is to track my earnings and withdrawals!",
-  "⚡ Fast and reliable payments every time. Couldn’t ask for more.",
-  "⭐ The daily faucet is a great way to build up small earnings over time.",
-  "🖥️ Smooth interface and quick payments make Earnbuzz a top choice."
+  "🤑 Was skeptical at first but it’s real. Highly recommended!"
 ];
 
 // === Nigerian Name Generators ===
@@ -84,14 +74,14 @@ function startBroadcasting() {
   messageCount = 0;
 
   broadcastInterval = setInterval(() => {
-    if (!broadcasting || messageCount >= 500) {
+    if (!broadcasting || messageCount >= 60) {  // Limit to 60 messages per minute
       stopBroadcasting();
       return;
     }
 
     sendReviewMessage();
     messageCount++;
-  }, 150000); // 2.5 minutes
+  }, 1000); // 1 second interval for 60 messages in a minute
 }
 
 function stopBroadcasting() {
