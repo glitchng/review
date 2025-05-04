@@ -74,14 +74,14 @@ function startBroadcasting() {
   messageCount = 0;
 
   broadcastInterval = setInterval(() => {
-    if (!broadcasting || messageCount >= 60) {  // Limit to 60 messages per minute
+    if (!broadcasting || messageCount >= 5) {  // Limit to 5 messages per minute
       stopBroadcasting();
       return;
     }
 
     sendReviewMessage();
     messageCount++;
-  }, 1000); // 1 second interval for 60 messages in a minute
+  }, 12000); // 12 seconds interval for 5 messages per minute
 }
 
 function stopBroadcasting() {
@@ -91,6 +91,7 @@ function stopBroadcasting() {
     broadcastInterval = null;
   }
 }
+
 
 // === Bot Commands ===
 bot.onText(/\/start/, (msg) => {
